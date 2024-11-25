@@ -1,0 +1,137 @@
+<div class="container">
+  <div class="inner-container">
+    <div class="main-img">
+      <img class="img" [src]="'assets/image-product-1.jpg'" alt="imageAvatar" />
+      <div class="other-images">
+        <img
+          class="img sm-img"
+          [src]="'assets/image-product-1-thumbnail.jpg'"
+          alt="imageAvatar"
+        />
+        <img
+          class="img sm-img"
+          [src]="'assets/image-product-2-thumbnail.jpg'"
+          alt="imageAvatar"
+        />
+        <img
+          class="img sm-img"
+          [src]="'assets/image-product-3-thumbnail.jpg'"
+          alt="imageAvatar"
+        />
+        <img
+          class="img sm-img"
+          [src]="'assets/image-product-4-thumbnail.jpg'"
+          alt="imageAvatar"
+        />
+      </div>
+    </div>
+    <div class="product-text-box">
+      <h6 class="subtitle text-color">{{ collection.subtitle }}</h6>
+      <h1 class="title">{{ collection.title }}</h1>
+      <p class="description text-color">{{ collection.description }}</p>
+      <div class="reduced-price">
+        <span class="half-price">${{ (collection.price / 2).toFixed(2) }}</span>
+        <div class="reduced-percentage">50%</div>
+      </div>
+      <h4 class="text-color line-through">
+        ${{ collection.price?.toFixed(2) }}
+      </h4>
+      <div class="cart-items-container">
+        <div class="cart-adding">
+          <button (click)="decrement()" class="btn-modify">
+            <svg
+              class="p-9"
+              width="12"
+              height="4"
+              viewBox="0 0 12 4"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M11.3571 3.33214C11.7134 3.33214 12 3.04554 12 2.68929V0.642857C12 0.286607 11.7134 0 11.3571 0H0.642857C0.286607 0 0 0.286607 0 0.642857V2.68929C0 3.04554 0.286607 3.33214 0.642857 3.33214H11.3571Z"
+                fill="#FF7E1B"
+              />
+              <mask
+                id="mask0_0_784"
+                style="mask-type: luminance"
+                maskUnits="userSpaceOnUse"
+                x="0"
+                y="0"
+                width="12"
+                height="4"
+              >
+                <path
+                  d="M11.3571 3.33214C11.7134 3.33214 12 3.04554 12 2.68929V0.642857C12 0.286607 11.7134 0 11.3571 0H0.642857C0.286607 0 0 0.286607 0 0.642857V2.68929C0 3.04554 0.286607 3.33214 0.642857 3.33214H11.3571Z"
+                  fill="white"
+                />
+              </mask>
+              <g mask="url(#mask0_0_784)"></g>
+            </svg>
+          </button>
+          <span class="product-number p-9">{{ quantity }}</span>
+          <button (click)="increment()" class="btn-modify">
+            <svg
+              class="p-9"
+              width="12"
+              height="12"
+              viewBox="0 0 12 12"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <g id="Solid/plus">
+                <path
+                  id="Mask"
+                  d="M12 7.02321V4.97679C12 4.62054 11.7134 4.33393 11.3571 4.33393H7.66607V0.642857C7.66607 0.286607 7.37946 0 7.02321 0H4.97679C4.62054 0 4.33393 0.286607 4.33393 0.642857V4.33393H0.642857C0.286607 4.33393 0 4.62054 0 4.97679V7.02321C0 7.37946 0.286607 7.66607 0.642857 7.66607H4.33393V11.3571C4.33393 11.7134 4.62054 12 4.97679 12H7.02321C7.37946 12 7.66607 11.7134 7.66607 11.3571V7.66607H11.3571C11.7134 7.66607 12 7.37946 12 7.02321Z"
+                  fill="black"
+                />
+                <mask
+                  id="mask0_0_788"
+                  style="mask-type: luminance"
+                  maskUnits="userSpaceOnUse"
+                  x="0"
+                  y="0"
+                  width="12"
+                  height="12"
+                >
+                  <path
+                    id="Mask_2"
+                    d="M12 7.02321V4.97679C12 4.62054 11.7134 4.33393 11.3571 4.33393H7.66607V0.642857C7.66607 0.286607 7.37946 0 7.02321 0H4.97679C4.62054 0 4.33393 0.286607 4.33393 0.642857V4.33393H0.642857C0.286607 4.33393 0 4.62054 0 4.97679V7.02321C0 7.37946 0.286607 7.66607 0.642857 7.66607H4.33393V11.3571C4.33393 11.7134 4.62054 12 4.97679 12H7.02321C7.37946 12 7.66607 11.7134 7.66607 11.3571V7.66607H11.3571C11.7134 7.66607 12 7.37946 12 7.02321Z"
+                    fill="white"
+                  />
+                </mask>
+                <g mask="url(#mask0_0_788)">
+                  <g id="Color">
+                    <rect
+                      id="Purple"
+                      x="-0.857147"
+                      y="-0.857117"
+                      width="13.7143"
+                      height="13.7143"
+                      fill="#FF7E1B"
+                    />
+                  </g>
+                </g>
+              </g>
+            </svg>
+          </button>
+        </div>
+        <button (click)="addToCart()" class="btn">
+          <svg
+            class="cart"
+            width="18"
+            height="16"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M20.925 3.641H3.863L3.61.816A.896.896 0 0 0 2.717 0H.897a.896.896 0 1 0 0 1.792h1l1.031 11.483c.073.828.52 1.726 1.291 2.336C2.83 17.385 4.099 20 6.359 20c1.875 0 3.197-1.87 2.554-3.642h4.905c-.642 1.77.677 3.642 2.555 3.642a2.72 2.72 0 0 0 2.717-2.717 2.72 2.72 0 0 0-2.717-2.717H6.365c-.681 0-1.274-.41-1.53-1.009l14.321-.842a.896.896 0 0 0 .817-.677l1.821-7.283a.897.897 0 0 0-.87-1.114ZM6.358 18.208a.926.926 0 0 1 0-1.85.926.926 0 0 1 0 1.85Zm10.015 0a.926.926 0 0 1 0-1.85.926.926 0 0 1 0 1.85Zm2.021-7.243-13.8.81-.57-6.341h15.753l-1.383 5.53Z"
+              fill="#000"
+              fill-rule="nonzero"
+            />
+          </svg>
+          Add to cart
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
