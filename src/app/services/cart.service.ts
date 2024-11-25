@@ -23,7 +23,9 @@ export class CartService {
   }
 
   incrementCartQuantity(additionalQuantity: number) {
-    this.updateCartQuantity(additionalQuantity);
+    const currentQuantity = this.cartQuantity.value;
+    const updatedQuantity = currentQuantity + additionalQuantity;
+    this.updateCartQuantity(updatedQuantity);
   }
 
   // Helper function to safely access localStorage
