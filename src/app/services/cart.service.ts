@@ -48,7 +48,7 @@ export class CartService {
   }
 
   resetCartQuantity() {
-    this.setLocalStorageItem('quantity', 0);
+    localStorage.setItem('quantity', '0');
     this.cartQuantity.next(0);
   }
 }
