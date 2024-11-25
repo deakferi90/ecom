@@ -8,7 +8,6 @@ export class CartService {
   private cartQuantity = new BehaviorSubject<number>(0);
 
   constructor() {
-    // Load initial value from localStorage if it exists (only in browser)
     const initialQuantity = this.getLocalStorageItem('quantity') || 0;
     this.cartQuantity.next(initialQuantity);
   }
@@ -28,7 +27,6 @@ export class CartService {
     this.updateCartQuantity(updatedQuantity);
   }
 
-  // Helper function to safely access localStorage
   private getLocalStorageItem(key: string): number | null {
     if (this.isBrowser()) {
       const item = localStorage.getItem(key);
