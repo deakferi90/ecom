@@ -46,4 +46,9 @@ export class CartService {
   private isBrowser(): boolean {
     return typeof window !== 'undefined' && typeof localStorage !== 'undefined';
   }
+
+  resetCartQuantity() {
+    this.setLocalStorageItem('quantity', 0);
+    this.cartQuantity.next(0);
+  }
 }
