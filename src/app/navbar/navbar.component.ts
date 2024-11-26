@@ -8,22 +8,23 @@ import {
   ViewChild,
 } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { CartService } from '../services/cart.service';
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
   imports: [RouterLink, CommonModule],
   templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.scss'], // Corrected property name
+  styleUrls: ['./navbar.component.scss'],
 })
 export class NavbarComponent implements OnInit {
   imagePath: string = 'assets/images/imageAvatar.png';
   activeLink: string = '';
   cartShown: boolean = false;
   collection: any = null;
-  quantity!: number;
+  quantity!: number | any;
 
-  constructor(private cdr: ChangeDetectorRef) {}
+  constructor(private cartService: CartService) {}
 
   links = [
     { path: '/', label: 'Collections' },
@@ -36,6 +37,9 @@ export class NavbarComponent implements OnInit {
   @ViewChild('pol') pol!: ElementRef;
 
   ngOnInit() {
+    this.cartService.getCartQuantity().subscribe((quantity) => {
+      this.quantity = quantity;
+    });
     if (typeof window !== 'undefined') {
       const storedActiveLink = localStorage.getItem('activeLink');
       this.activeLink = storedActiveLink
@@ -89,8 +93,8 @@ export class NavbarComponent implements OnInit {
     }
   }
 
-  removeItem() {
-    localStorage.removeItem('collection');
-    this.collection = !this.collection;
+  clearCart() {
+    this.cartService.resetCartQuantity();
+    this.quantity = null;
   }
 }

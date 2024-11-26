@@ -1,27 +1,95 @@
 <div class="container">
   <div class="inner-container">
     <div class="main-img">
-      <img class="img" [src]="'assets/image-product-1.jpg'" alt="imageAvatar" />
+      <img
+        class="img"
+        (click)="openModal(mainImage)"
+        [src]="mainImage"
+        alt="imageAvatar"
+      />
+      <div
+        class="modal"
+        *ngIf="isModalOpen"
+        (click)="onModalContentClick($event)"
+      >
+        <div class="images-modal">
+          <img class="modal-img" [src]="modalImage" alt="Expanded Image" />
+          <svg
+            class="path-left"
+            (click)="switchImage('previous', $event)"
+            width="13"
+            height="20"
+            viewBox="0 0 13 20"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              id="Path 2"
+              d="M11 2L3 10L11 18"
+              stroke="#fff"
+              stroke-width="3"
+            />
+          </svg>
+
+          <button
+            class="close-btn"
+            (click)="closeModal()"
+            aria-label="Close Modal"
+          >
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 20 20"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                id="Combined Shape"
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M20 2.85714L17.1429 0L10 7.14286L2.85714 0L0 2.85714L7.14286 10L0 17.1429L2.85714 20L10 12.8571L17.1429 20L20 17.1429L12.8571 10L20 2.85714Z"
+                fill="white"
+              />
+            </svg>
+          </button>
+          <svg
+            class="path-right"
+            (click)="switchImage('next', $event)"
+            width="13"
+            height="20"
+            viewBox="0 0 13 20"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              id="Path 2"
+              d="M2 2L10 10L2 18"
+              stroke="#fff"
+              stroke-width="3"
+            />
+          </svg>
+          <div class="other-images">
+            <img
+              *ngFor="let imageId of collected; let i = index"
+              class="img sm-img"
+              [src]="'assets/image-product-' + imageId.id + '.jpg'"
+              alt="imageAvatar"
+              (click)="
+                changeImagePath('assets/image-product-' + imageId.id + '.jpg')
+              "
+            />
+          </div>
+        </div>
+      </div>
       <div class="other-images">
         <img
+          *ngFor="let imageId of collected; let i = index"
           class="img sm-img"
-          [src]="'assets/image-product-1-thumbnail.jpg'"
+          [src]="'assets/image-product-' + imageId.id + '.jpg'"
           alt="imageAvatar"
-        />
-        <img
-          class="img sm-img"
-          [src]="'assets/image-product-2-thumbnail.jpg'"
-          alt="imageAvatar"
-        />
-        <img
-          class="img sm-img"
-          [src]="'assets/image-product-3-thumbnail.jpg'"
-          alt="imageAvatar"
-        />
-        <img
-          class="img sm-img"
-          [src]="'assets/image-product-4-thumbnail.jpg'"
-          alt="imageAvatar"
+          (click)="
+            changeImagePath('assets/image-product-' + imageId.id + '.jpg')
+          "
         />
       </div>
     </div>
@@ -134,4 +202,5 @@
       </div>
     </div>
   </div>
+  <div class="background-black"></div>
 </div>

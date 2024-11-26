@@ -1,17 +1,28 @@
 .img {
   width: 445px;
   border-radius: 10px;
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 .inner-container {
   padding-top: 60px;
   padding-left: 40px;
   display: flex;
+
+  @media screen and (max-width: 992px) {
+    padding-top: 20px;
+  }
 }
 
 .sm-img {
   width: 88px;
   border-radius: 10px;
+
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 .other-images {
@@ -24,6 +35,11 @@
 
 .title {
   max-width: 300px;
+
+  @media screen and (max-width: 992px) {
+    text-align: center;
+    max-width: fill-available;
+  }
 }
 
 .subtitle {
@@ -37,6 +53,11 @@
 .product-text-box {
   padding-top: 45px;
   padding-left: 125px;
+
+  @media screen and (max-width: 1200px) {
+    padding-top: 0px;
+    padding-left: 80px;
+  }
 }
 
 .text-color {
@@ -68,6 +89,10 @@
 .cart-items-container {
   display: flex;
   gap: 30px;
+
+  @media screen and (max-width: 1314px) {
+    flex-direction: column;
+  }
 }
 
 .cart-adding {
@@ -77,6 +102,10 @@
   background: #f6f8fd;
   width: max-content;
   border-radius: 10px;
+
+  .btn {
+    width: 220px;
+  }
 
   .btn-modify {
     background: transparent;
@@ -94,4 +123,90 @@
 
 .p-9 {
   padding: 0 9px;
+}
+
+.image-container .img {
+  cursor: pointer;
+  max-width: 100%;
+  transition: transform 0.3s;
+}
+
+.image-container .img:hover {
+  transform: scale(1.05);
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease-in-out;
+
+  .close-btn {
+    position: absolute;
+    right: -40px;
+    background: transparent;
+    border: none;
+    animation: fadeIn 0.3s ease-in-out;
+    transform: scale(2);
+
+    @media screen and (max-width: 1200px) {
+      top: 10px;
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  .path-left,
+  .path-right {
+    position: absolute;
+    top: calc(50% - 10px);
+    transform: scale(3);
+    transform-origin: center;
+    animation: fadeIn 0.3s ease-in-out;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  .path-left {
+    left: -35px;
+  }
+
+  .path-right {
+    right: -35px;
+  }
+
+  .images-modal {
+    position: relative;
+    display: inline-block;
+  }
+}
+
+.modal-img {
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.5);
+  border-radius: 8px;
+
+  @media screen and (max-width: 1200px) {
+    width: 315px;
+    margin-left: 15%;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }

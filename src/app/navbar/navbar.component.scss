@@ -18,6 +18,12 @@
       display: flex;
       align-items: center;
       justify-content: center;
+
+      .clear-cart {
+        &:hover {
+          cursor: pointer;
+        }
+      }
     }
 
     .cart-title {
@@ -117,4 +123,16 @@
 .container-header {
   display: flex;
   align-items: center;
+
+  .product-number {
+    position: absolute;
+    top: 45px;
+    margin-left: 20px;
+    width: 20px;
+    height: 20px;
+    background: #ff7e1b;
+    text-align: center;
+    color: #fff;
+    border-radius: 50%;
+  }
 }
