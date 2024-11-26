@@ -1,6 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { CollectionsService } from './collections.service';
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Output,
+  EventEmitter,
+  HostListener,
+  ElementRef,
+} from '@angular/core';
 import { CartService } from '../services/cart.service';
 
 @Component({
@@ -24,9 +31,11 @@ export class CollectionsComponent implements OnInit {
     { id: 4, name: 'assets/image-product-4.jpg' },
   ];
   @Output() quntity = new EventEmitter<any>();
+  sidenavOpen: any;
   constructor(
     private collectionsService: CollectionsService,
-    private cartService: CartService
+    private cartService: CartService,
+    private elementRef: ElementRef
   ) {}
 
   ngOnInit(): void {
@@ -59,7 +68,6 @@ export class CollectionsComponent implements OnInit {
 
   onModalContentClick(event: Event) {
     event.stopPropagation();
-    console.log('Clicked inside modal content. Modal remains open.');
   }
 
   currentImageIndex: number = 0;
@@ -118,6 +126,8 @@ export class CollectionsComponent implements OnInit {
     e.preventDefault();
     console.log('I clicked on the right button');
   }
+
+  closeSideNav() {}
 
   addToCart() {
     if (typeof window !== 'undefined') {

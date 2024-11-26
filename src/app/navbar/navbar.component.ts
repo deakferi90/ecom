@@ -1,10 +1,12 @@
 import { CommonModule } from '@angular/common';
 import {
-  ChangeDetectorRef,
   Component,
   ElementRef,
+  EventEmitter,
   HostListener,
+  Input,
   OnInit,
+  Output,
   ViewChild,
 } from '@angular/core';
 import { RouterLink } from '@angular/router';
@@ -23,6 +25,13 @@ export class NavbarComponent implements OnInit {
   cartShown: boolean = false;
   collection: any = null;
   quantity!: number | any;
+  @Input() sidenavOpen: boolean = false;
+  @Output() sidenavToggle: EventEmitter<boolean> = new EventEmitter();
+
+  toggleSidenav(): void {
+    this.sidenavOpen = !this.sidenavOpen;
+    this.sidenavToggle.emit(this.sidenavOpen);
+  }
 
   constructor(private cartService: CartService) {}
 
@@ -54,6 +63,10 @@ export class NavbarComponent implements OnInit {
     if (typeof window !== 'undefined') {
       localStorage.setItem('activeLink', path);
     }
+  }
+
+  navigateAndCloseSidenav() {
+    this.sidenavOpen = false;
   }
 
   @HostListener('document:click', ['$event'])

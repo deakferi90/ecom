@@ -13,4 +13,9 @@ import { CollectionsComponent } from './collections/collections.component';
 export class AppComponent {
   title = 'ecommerce';
   imagePath: string = './assets/images/logo.svg';
+  sidenavOpen: boolean = false;
+
+  toggleSidenav(isOpen: boolean): void {
+    this.sidenavOpen = isOpen;
+  }
 }
