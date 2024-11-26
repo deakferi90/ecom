@@ -11,11 +11,12 @@ import { CartService } from '../services/cart.service';
   styleUrl: './collections.component.scss',
 })
 export class CollectionsComponent implements OnInit {
-  quantity: number = 1;
+  quantity: number = 0;
   collection: any = {};
   mainImage: string = 'assets/image-product-1.jpg';
   modalImage: string = '';
   isModalOpen: boolean = false;
+  activeImageId: number | null = null;
   collected = [
     { id: 1, name: 'assets/image-product-1.jpg' },
     { id: 2, name: 'assets/image-product-2.jpg' },
@@ -43,13 +44,17 @@ export class CollectionsComponent implements OnInit {
   }
 
   decrement() {
-    if (this.quantity > 1) {
+    if (this.quantity > 0) {
       this.quantity--;
     }
   }
 
   changeImagePath(mainImage: string) {
     this.mainImage = mainImage;
+  }
+
+  changeImagePathModal(mainImage: string) {
+    this.modalImage = mainImage;
   }
 
   onModalContentClick(event: Event) {

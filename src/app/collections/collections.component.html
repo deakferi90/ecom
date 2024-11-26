@@ -74,8 +74,11 @@
               class="img sm-img"
               [src]="'assets/image-product-' + imageId.id + '.jpg'"
               alt="imageAvatar"
+              [class.active]="imageId.id === activeImageId"
               (click)="
-                changeImagePath('assets/image-product-' + imageId.id + '.jpg')
+                changeImagePathModal(
+                  'assets/image-product-' + imageId.id + '.jpg'
+                )
               "
             />
           </div>
@@ -87,6 +90,7 @@
           class="img sm-img"
           [src]="'assets/image-product-' + imageId.id + '.jpg'"
           alt="imageAvatar"
+          [class.active]="imageId.id === activeImageId"
           (click)="
             changeImagePath('assets/image-product-' + imageId.id + '.jpg')
           "
